@@ -3,17 +3,22 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Routes
 import Dashboard, { dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
+import Main, { MainLoader } from "./layouts/Main";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
-    loader: dashboardLoader,
+    element: <Main />,
+    loader: MainLoader,
     errorElement: <Error />,
-  },
-  {
-    path: "/about",
-    element: <h1>about</h1>,
+    children: [
+      {
+        path: "/",
+        element: <Dashboard />,
+        loader: dashboardLoader,
+        errorElement: <Error />,
+      },
+    ],
   },
 ]);
 

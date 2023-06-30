@@ -1,17 +1,24 @@
-import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// Routes
+import Dashboard, { dashboardLoader } from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-    loader: rootLoader,
+    element: <Dashboard />,
+    loader: dashboardLoader,
+  },
+  {
+    path: "/about",
+    element: <h1>about</h1>,
   },
 ]);
 
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={Router} />
+      <RouterProvider router={router} />
     </div>
   );
 }
